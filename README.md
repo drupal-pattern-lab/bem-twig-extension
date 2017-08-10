@@ -1,5 +1,5 @@
 # bem-twig-extension
-Twig function that inserts static classes into Pattern Lab but adds them to the Attributes object in Drupal
+Twig function that inserts static classes into Pattern Lab and adds them to the Attributes object in Drupal
 
 ## Requirements
 
