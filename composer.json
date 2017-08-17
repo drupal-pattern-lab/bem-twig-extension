@@ -1,5 +1,5 @@
 {
-    "name": "drupal-pattern-lab/bem-twig-function",
+    "name": "drupal-pattern-lab/bem-twig-extension",
     "description": "Twig function that inserts static classes into Pattern Lab and adds them to the Attributes object in Drupal",
     "license": "MIT",
     "authors": [
