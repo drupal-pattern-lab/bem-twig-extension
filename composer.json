@@ -1,0 +1,15 @@
+{
+    "name": "drupal-pattern-lab/bem-twig-function",
+    "description": "Twig function that inserts static classes into Pattern Lab and adds them to the Attributes object in Drupal",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jeff Tomlinson",
+            "email": "jeff@fourkitchens.com"
+        },
+        {
+            "name": "Evan Willhite",
+            "email": "evan@fourkitchens.com"
+        }
+    ]
+}
