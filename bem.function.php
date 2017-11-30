@@ -9,6 +9,24 @@ use Drupal\Core\Template\Attribute;
 $function = new Twig_SimpleFunction('bem', function ($context, $base_class, $modifiers = array(), $blockname = '', $extra = array()) {
   $classes = [];
 
+  // Add the ability to pass an object as the one and only argument.
+  if (is_object($base_class)) {
+    $object = $base_class;
+    unset($base_class);
+    $map = [
+      'block' => 'base_class',
+      'element' => 'blockname',
+      'modifiers' => 'modifiers',
+      'classes' => 'extra',
+    ];
+
+    foreach ($map as $object_key => $arg_key) {
+      if (isset($object->$object_key)) {
+        $$arg_key = $object->$object_key;
+      }
+    }
+  }
+
   // If using a blockname to override default class.
   if ($blockname) {
     // Set blockname class.
