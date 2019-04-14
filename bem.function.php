@@ -43,6 +43,11 @@ $function = new Twig_SimpleFunction('bem', function ($context, $base_class, $mod
   if (class_exists('Drupal')) {
     $attributes = new Attribute();
 
+    // Ensure that the context attributes are an array (this is not a given)
+    if (!$context['attributes']) {
+      $context['attributes'] = [];
+    }
+
     // Iterate the attributes available in context.
     foreach($context['attributes'] as $key => $value) {
       // If there are classes, add them to the classes array.
