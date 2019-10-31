@@ -6,7 +6,7 @@
 
 use Drupal\Core\Template\Attribute;
 
-$function = new Twig_SimpleFunction('bem', function ($context, $base_class, $modifiers = array(), $blockname = '', $extra = array()) {
+$function = new \Twig\TwigFunction('bem', function ($context, $base_class, $modifiers = array(), $blockname = '', $extra = array()) {
   $classes = [];
 
   // Add the ability to pass an object as the one and only argument.
