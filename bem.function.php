@@ -1,7 +1,8 @@
 <?php
+
 /**
  * @file
- * Add "bem" function for Pattern Lab & Drupal
+ * Add "bem" function for Pattern Lab & Drupal.
  */
 
 use Drupal\Core\Template\Attribute;
@@ -27,11 +28,11 @@ $function = new Twig_SimpleFunction('bem', function ($context, $base_class, $mod
     }
   }
 
-  // Ensure array arguments.
-  if (!is_array($modifiers)) {
+  // Ensure array arguments only if a value is present.
+  if (isset($modifiers) && !is_array($modifiers)) {
     $modifiers = [$modifiers];
   }
-  if (!is_array($extra)) {
+  if (isset($extra) && !is_array($extra)) {
     $extra = [$extra];
   }
 
@@ -41,7 +42,7 @@ $function = new Twig_SimpleFunction('bem', function ($context, $base_class, $mod
     $classes[] = $blockname . '__' . $base_class;
 
     // Set blockname--modifier classes for each modifier.
-    if (isset($modifiers) && is_array($modifiers)) {
+    if (isset($modifiers)) {
       foreach ($modifiers as $modifier) {
         $classes[] = $blockname . '__' . $base_class . '--' . $modifier;
       };
@@ -52,7 +53,7 @@ $function = new Twig_SimpleFunction('bem', function ($context, $base_class, $mod
     // Set base class.
     $classes[] = $base_class;
     // Set base--modifier class for each modifier.
-    if (isset($modifiers) && is_array($modifiers)) {
+    if (isset($modifiers)) {
       foreach ($modifiers as $modifier) {
         $classes[] = $base_class . '--' . $modifier;
       };
@@ -60,7 +61,7 @@ $function = new Twig_SimpleFunction('bem', function ($context, $base_class, $mod
   }
 
   // If extra non-BEM classes are added.
-  if (isset($extra) && is_array($extra)) {
+  if (isset($extra)) {
     foreach ($extra as $extra_class) {
       $classes[] = $extra_class;
     };
@@ -70,7 +71,7 @@ $function = new Twig_SimpleFunction('bem', function ($context, $base_class, $mod
     $attributes = new Attribute();
 
     // Iterate the attributes available in context.
-    foreach($context['attributes'] as $key => $value) {
+    foreach ($context['attributes'] as $key => $value) {
       // If there are classes, add them to the classes array.
       if ($key === 'class') {
         foreach ($value as $class) {
@@ -99,4 +100,4 @@ $function = new Twig_SimpleFunction('bem', function ($context, $base_class, $mod
     return $attributes;
   }
 
-}, array('needs_context' => true, 'is_safe' => array('html')));
+}, array('needs_context' => TRUE, 'is_safe' => array('html')));
